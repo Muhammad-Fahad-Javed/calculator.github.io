@@ -14,8 +14,7 @@ This project performs basic arithmetic operations with a clean and easy-to-use i
 - JavaScript
 
 ## 🚀 Live Demo
-https://Muhammad-Fahad-Javed.github.io/fj-calculator-project/
-
+https://muhammad-fahad-javed.github.io/calculator.github.io/
 
 ## 👤 Author
 Fahad Javed (FJ)
