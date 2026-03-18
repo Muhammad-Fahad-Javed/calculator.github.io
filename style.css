@@ -1,89 +1,164 @@
+/* ===== BODY & BACKGROUND ===== */
 body {
-  background-image: url('9495910.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin: 0;   /* remove default body margin */
-  height: 100vh; /* make sure it covers full screen */
+  margin: 0;
+  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+  position: relative;
 }
 
-
-
-
-
-
-
-.text{
-border-radius:5px;
-height:70px;
-width:480px;
-justify-items: center;
-font-size:30px;
-margin-left:2px;
-background-color: rgb(236, 236, 230);
-}
-.bord{
-  
-border:3px solid rgb(157, 152, 97);
-height: 487px;
-width:492px;
+/* Animated Gradient Background */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(-45deg, #f5923e, #f5a623, #d4d4d2, #a6a6a6);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  z-index: -2;
 }
 
+@keyframes gradientBG {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Floating Dots Animation */
+body::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: moveDots 10s linear infinite;
+  z-index: -1;
+}
+
+@keyframes moveDots {
+  0%   { background-position: 0 0; }
+  100% { background-position: 100px 100px; }
+}
+
+/* ===== INPUT DISPLAY ===== */
+.text {
+  border-radius: 5px;
+  height: 70px;
+  width: 480px;
+  justify-items: center;
+  font-size: 30px;
+  margin-left: 2px;
+  background-color: rgba(236, 236, 230, 0.8);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+  padding-right: 10px;
+  text-align: right;
+  border: none;
+  outline: none;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== CALCULATOR CONTAINER ===== */
+.bord {
+  border: 3px solid rgba(157, 152, 97, 0.8);
+  height: 487px;
+  width: 492px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  background-color: rgba(255,255,255,0.1);
+}
+
+/* ===== BUTTONS ===== */
+.box,
+.oparation,
+.special {
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  flex: 0 0 auto;
+}
+
+/* Number Buttons */
 .box {
-    height: 100px;
-    width: 120px;
-    background-color: rgb(180, 175, 164);
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+  height: 100px;
+  width: 120px;
+  background-color: #d4d4d2;
+  color: #000;
 }
 
-/* Hover effect for normal buttons */
 .box:hover {
-    background-color: rgb(150, 145, 135);
-    transform: scale(1.05);
+  background-color: #c6c6c6;
+  box-shadow: 0 0 8px rgba(255,255,255,0.3);
+  transform: scale(1.05);
 }
 
+/* Operation Buttons (+, -, ×, ÷) */
 .oparation {
-    height: 100px;
-    width: 120px;
-    background-color: rgb(238, 195, 53);
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+  height: 100px;
+  width: 120px;
+  background-color: #f5923e;
+  color: #fff;
 }
 
-/* Hover effect for operation buttons */
 .oparation:hover {
-    background-color: rgb(200, 115, 10);
-    transform: scale(1.05);
+  background-color: #e07b1f;
+  box-shadow: 0 0 10px rgba(255,170,0,0.5);
+  transform: scale(1.05);
 }
 
 
-/* ===== MOBILE RESPONSIVE FIX (ADDED ONLY) ===== */
-@media (max-width: 600px) {
 
+.special:hover {
+  background-color: #8c8c8c;
+  transform: scale(1.05);
+}
+
+/* Button press effect */
+.box:active,
+.oparation:active,
+.special:active {
+  transform: scale(0.96);
+}
+
+/* ===== MOBILE RESPONSIVE FIX ===== */
+@media (max-width: 600px) {
   .bord {
     width: 95%;
     height: auto;
     margin: auto;
   }
-
+  
   .text {
     width: 100%;
     height: 60px;
     font-size: 22px;
   }
-
+  
   .box,
-  .oparation {
+  .oparation,
+  .special {
     width: 22%;
     height: 70px;
     font-size: 18px;
     margin: 4px;
   }
-
+  
   center {
     margin-top: 20px;
   }
+}
+
+/* ===== BOX-SIZING ===== */
+* {
+  box-sizing: border-box;
 }
